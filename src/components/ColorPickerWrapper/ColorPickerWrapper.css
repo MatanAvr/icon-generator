@@ -1,0 +1,18 @@
+/* .clr-field {
+} */
+
+.clr-field button {
+  border: 1px solid gray;
+  border-radius: 50%;
+  height: 24px;
+  width: 24px;
+}
+
+/* .clr-field button::after {
+} */
+
+.clr-field input {
+  color: white;
+  width: 23px;
+  border-radius: 50%;
+}
