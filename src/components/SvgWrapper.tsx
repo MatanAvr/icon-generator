@@ -2,11 +2,12 @@
 
 import dynamicIconImports from "lucide-react/dynamicIconImports";
 import { DOWNLOAD_DIV_ID } from "../consts";
-import { TIcon } from "../types";
+import { TSettings } from "../types";
 import DynamicIcon from "./DynamicIcon";
+import { useEffect, useState } from "react";
 
 type SvgWrapperProps = {
-  iconObj: TIcon;
+  iconObj: TSettings;
 };
 
 const SvgWrapper = ({ iconObj }: SvgWrapperProps) => {
@@ -18,11 +19,35 @@ const SvgWrapper = ({ iconObj }: SvgWrapperProps) => {
     iconSize,
     iconRotation,
     bgColor,
+    bgColor2,
     bgRadius,
     bgSize,
+    bgType,
+    bgGradientType,
+    bgAngle,
   } = iconObj;
 
+  const [computedBg, setComputedBg] = useState<string>("");
+
   const previewBoxSize = 500;
+
+  const computeBg = () => {
+    let tempBg = "";
+    if (bgType === "solid") {
+      tempBg = bgColor;
+    } else if (bgType === "gradient") {
+      if (bgGradientType === "linear") {
+        tempBg = `linear-gradient(${bgAngle}deg, ${bgColor} 0%, ${bgColor2} 100%)`;
+      } else if (bgGradientType === "radial") {
+        tempBg = `radial-gradient(circle, ${bgColor} 0%, ${bgColor2} 100%)`;
+      }
+    }
+    setComputedBg(tempBg);
+  };
+
+  useEffect(() => {
+    computeBg();
+  }, [bgType, bgColor, bgColor2, bgGradientType, bgAngle]);
 
   return (
     <div
@@ -34,7 +59,7 @@ const SvgWrapper = ({ iconObj }: SvgWrapperProps) => {
     >
       <div
         id={DOWNLOAD_DIV_ID}
-        className="flex item-center justify-center outline outline-1 outline-black outline-dashed"
+        className="flex item-center justify-center outline outline-1 outline-white outline-dashed"
         style={{
           height: `${bgSize}px`,
           width: `${bgSize}px`,
@@ -45,7 +70,7 @@ const SvgWrapper = ({ iconObj }: SvgWrapperProps) => {
           id="svg-container"
           className="flex items-center justify-center h-full w-full overflow-hidden"
           style={{
-            backgroundColor: bgColor || "",
+            background: computedBg,
             borderRadius: bgRadius + "px",
           }}
         >

@@ -1,6 +1,8 @@
-export type TTypeName = "Icon" | "Background";
+export type TTab = "Icon" | "Background";
+export type TBgType = "solid" | "gradient";
+export type TBgGradientType = "linear" | "radial";
 
-export type TIcon = {
+export type TSettings = {
   name: string;
   icon: string;
   iconSize: number;
@@ -10,5 +12,9 @@ export type TIcon = {
   iconRotation: number;
   bgSize: number;
   bgColor: string;
+  bgColor2: string;
   bgRadius: number;
+  bgType: TBgType;
+  bgGradientType: TBgGradientType;
+  bgAngle: number;
 };

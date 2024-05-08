@@ -1,7 +1,7 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { TIcon } from "../types";
+import { TBgGradientType, TBgType, TSettings } from "../types";
 
-const defaultIcon: TIcon = {
+const defaulSettings: TSettings = {
   icon: "arrow-big-up",
   name: "My-icon",
   iconSize: 300,
@@ -10,16 +10,23 @@ const defaultIcon: TIcon = {
   iconStrokeColor: "#000000",
   iconRotation: 0,
   bgSize: 500,
-  bgColor: "#ffffff",
+  bgColor: "#9d9d9d",
+  bgColor2: "#ffffff",
   bgRadius: 0,
+  bgType: "solid",
+  bgGradientType: "linear",
+  bgAngle: 0,
 };
 
-export const iconSlice = createSlice({
-  name: "icon",
+export const settingsSlice = createSlice({
+  name: "settings",
   initialState: {
-    ...defaultIcon,
+    ...defaulSettings,
   },
   reducers: {
+    changeSettings: (state, action: PayloadAction<TSettings>) => {
+      return { ...state, ...action.payload };
+    },
     changeIcon: (state, action: PayloadAction<string>) => {
       state.icon = action.payload;
     },
@@ -47,13 +54,26 @@ export const iconSlice = createSlice({
     changeBgColor: (state, action: PayloadAction<string>) => {
       state.bgColor = action.payload;
     },
+    changeBgColor2: (state, action: PayloadAction<string>) => {
+      state.bgColor2 = action.payload;
+    },
     changeBgRadius: (state, action: PayloadAction<number>) => {
       state.bgRadius = action.payload;
+    },
+    changeBgType: (state, action: PayloadAction<TBgType>) => {
+      state.bgType = action.payload;
+    },
+    changeBgGradientType: (state, action: PayloadAction<TBgGradientType>) => {
+      state.bgGradientType = action.payload;
+    },
+    changeBgAngle: (state, action: PayloadAction<number>) => {
+      state.bgAngle = action.payload;
     },
   },
 });
 
 export const {
+  changeSettings,
   changeIcon,
   changeIconName,
   changeIconSize,
@@ -63,7 +83,11 @@ export const {
   changeIconRotation,
   changeBgSize,
   changeBgColor,
+  changeBgColor2,
   changeBgRadius,
-} = iconSlice.actions;
+  changeBgType,
+  changeBgGradientType,
+  changeBgAngle,
+} = settingsSlice.actions;
 
-export default iconSlice.reducer;
+export default settingsSlice.reducer;

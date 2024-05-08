@@ -1,9 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-import iconReducer from "../Features/Icon";
+import settingsReducer from "../Features/Settings";
 
 export const store = configureStore({
   reducer: {
-    icon: iconReducer,
+    settings: settingsReducer,
   },
 });
 

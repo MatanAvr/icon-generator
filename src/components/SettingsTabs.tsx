@@ -1,9 +1,9 @@
-import { TTypeName } from "../types";
+import { TTab } from "../types";
 
-const tabsArr: TTypeName[] = ["Icon", "Background"];
+const tabsArr: TTab[] = ["Icon", "Background"];
 type SettingsTabsProps = {
-  currentTab: TTypeName;
-  changeTabHandler: (newTab: TTypeName) => void;
+  currentTab: TTab;
+  changeTabHandler: (newTab: TTab) => void;
 };
 
 const SettingsTabs = ({ currentTab, changeTabHandler }: SettingsTabsProps) => {

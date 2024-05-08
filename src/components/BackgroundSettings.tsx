@@ -1,12 +1,16 @@
 "use client";
 
 import {
+  changeBgAngle,
   changeBgColor,
+  changeBgColor2,
   changeBgRadius,
   changeBgSize,
   changeIconFillColor,
-} from "../Features/Icon";
+} from "../Features/Settings";
 import { useAppSelector, useAppDispatch } from "../hooks/useStoreHooks";
+import BackgroundGradientType from "./BackgroundGradientType";
+import BackgroundType from "./BackgroundType";
 import ColorPickerWrapper from "./ColorPickerWrapper/ColorPickerWrapper";
 import RangeWrapper from "./RangeWrapper";
 
@@ -14,7 +18,15 @@ type BackgroundSettingsProps = {};
 
 const BackgroundSettings = ({}: BackgroundSettingsProps) => {
   const dispatch = useAppDispatch();
-  const { bgColor, bgSize, bgRadius } = useAppSelector((state) => state.icon);
+  const {
+    bgColor,
+    bgColor2,
+    bgSize,
+    bgRadius,
+    bgType,
+    bgGradientType,
+    bgAngle,
+  } = useAppSelector((state) => state.settings);
 
   const changeBgSizeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newSize = Number(e.target.value);
@@ -30,8 +42,16 @@ const BackgroundSettings = ({}: BackgroundSettingsProps) => {
     dispatch(changeBgColor(newColor));
   };
 
+  const changeBgColor2Handler = (newColor: string) => {
+    dispatch(changeBgColor2(newColor));
+  };
+
   const changeIconFillTransparentHandler = () => {
     dispatch(changeIconFillColor("#ffffff00"));
+  };
+  const changeBgAngleHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newAngle = Number(e.target.value);
+    dispatch(changeBgAngle(newAngle));
   };
 
   return (
@@ -55,14 +75,33 @@ const BackgroundSettings = ({}: BackgroundSettingsProps) => {
         onChange={changeBgRadiusHandler}
         units="px"
       />
+      <BackgroundType />
+      <BackgroundGradientType />
+
       <ColorPickerWrapper
         id="bg-color-picker"
         title="Color"
         currentColor={bgColor}
         onChange={changeBgColorHandler}
       />
+      <ColorPickerWrapper
+        id="bg-color2-picker"
+        title="Color-2"
+        currentColor={bgColor2}
+        onChange={changeBgColor2Handler}
+      />
+
+      <RangeWrapper
+        title="Gradiant angle"
+        currentValue={bgAngle}
+        min={-180}
+        step={1}
+        max={180}
+        onChange={changeBgAngleHandler}
+        units="deg"
+      />
       <button
-        className="btn btn-xs btn-outline btn-primary"
+        className="btn btn-xs btn-outline btn-primary justify-self-center"
         onClick={changeIconFillTransparentHandler}
       >
         Make icon fill transparent

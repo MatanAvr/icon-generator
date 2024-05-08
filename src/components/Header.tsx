@@ -1,12 +1,13 @@
 import { DOWNLOAD_DIV_ID } from "../consts";
 import { useAppDispatch, useAppSelector } from "../hooks/useStoreHooks";
 import { downloadDivAsPNG } from "../utils/downloadDivAsPNG";
-import { changeIconName } from "../Features/Icon";
+import { changeIconName } from "../Features/Settings";
 
 type HeaderProps = {};
 
 const Header = ({}: HeaderProps) => {
-  const iconName = useAppSelector((state) => state.icon.name);
+  const settings = useAppSelector((state) => state.settings);
+  const iconName = settings.name;
   const dispatch = useAppDispatch();
 
   const changeIconNameHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -31,6 +32,17 @@ const Header = ({}: HeaderProps) => {
             onChange={changeIconNameHandler}
           />
         </label>
+      </div>
+
+      <div>
+        <button
+          className="btn btn-primary btn-md"
+          onClick={() => {
+            console.log(settings);
+          }}
+        >
+          Settings
+        </button>
       </div>
 
       <div>

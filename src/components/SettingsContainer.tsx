@@ -1,10 +1,10 @@
 "use client";
 
-import { TTypeName } from "../types";
+import { TTab } from "../types";
 import BackgroundSettings from "./BackgroundSettings";
 import IconSettings from "./IconSettings";
 
-type SettingsContainerProps = { currentTab: TTypeName };
+type SettingsContainerProps = { currentTab: TTab };
 
 const SettingsContainer = ({ currentTab }: SettingsContainerProps) => {
   return (

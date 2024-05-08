@@ -8,7 +8,7 @@ import {
   changeIconSize,
   changeIconStrokeColor,
   changeIconStrokeWidth,
-} from "../Features/Icon";
+} from "../Features/Settings";
 import { useAppSelector, useAppDispatch } from "../hooks/useStoreHooks";
 import ColorPickerWrapper from "./ColorPickerWrapper/ColorPickerWrapper";
 import RangeWrapper from "./RangeWrapper";
@@ -24,7 +24,7 @@ const IconSettings = ({}: IconSettingsProps) => {
     iconStrokeColor,
     iconStrokeWidth,
     iconRotation,
-  } = useAppSelector((state) => state.icon);
+  } = useAppSelector((state) => state.settings);
   const dispatch = useAppDispatch();
   const [showIconModal, setShowIconsModal] = useState<boolean>(false);
 
@@ -81,7 +81,7 @@ const IconSettings = ({}: IconSettingsProps) => {
       <RangeWrapper
         title={"Size"}
         currentValue={iconSize}
-        min={1}
+        min={20}
         step={1}
         max={600}
         onChange={changeIconSizeHandler}
