@@ -59,7 +59,7 @@ const SvgWrapper = ({ iconObj }: SvgWrapperProps) => {
     >
       <div
         id={DOWNLOAD_DIV_ID}
-        className="flex item-center justify-center outline outline-1 outline-white outline-dashed"
+        className="flex item-center justify-center outline outline-1 outline-white/50 outline-dashed"
         style={{
           height: `${bgSize}px`,
           width: `${bgSize}px`,

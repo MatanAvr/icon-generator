@@ -18,15 +18,9 @@ type BackgroundSettingsProps = {};
 
 const BackgroundSettings = ({}: BackgroundSettingsProps) => {
   const dispatch = useAppDispatch();
-  const {
-    bgColor,
-    bgColor2,
-    bgSize,
-    bgRadius,
-    bgType,
-    bgGradientType,
-    bgAngle,
-  } = useAppSelector((state) => state.settings);
+  const { bgColor, bgColor2, bgSize, bgRadius, bgAngle } = useAppSelector(
+    (state) => state.settings
+  );
 
   const changeBgSizeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newSize = Number(e.target.value);
@@ -92,7 +86,7 @@ const BackgroundSettings = ({}: BackgroundSettingsProps) => {
       />
 
       <RangeWrapper
-        title="Gradiant angle"
+        title="Linear gradiant angle"
         currentValue={bgAngle}
         min={-180}
         step={1}

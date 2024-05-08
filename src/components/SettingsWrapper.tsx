@@ -21,10 +21,28 @@ const SettingsWrapper = ({}: SettingsWrapperProps) => {
         changeTabHandler={changeTabHandler}
       />
       <SettingsContainer currentTab={currentTab} />
-      <div className="flex flex-col p-1 gap-1 text-sm">
+      <div className="flex flex-col p-1 gap-1 justify-center w-full text-sm">
         <div className="divider my-1 py-1" />
-        <span>App by Matan Avraham *link*</span>
-        <span>Icons by lucide *link*</span>
+        <span>
+          App by{" "}
+          <a
+            className="link link-primary"
+            href="https://www.matanavraham.com"
+            target="_blank"
+          >
+            Matan Avraham
+          </a>
+        </span>
+        <span>
+          Icons by{" "}
+          <a
+            className="link link-primary"
+            href="https://lucide.dev/"
+            target="_blank"
+          >
+            lucide
+          </a>
+        </span>
       </div>
     </div>
   );

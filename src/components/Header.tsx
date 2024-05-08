@@ -24,25 +24,15 @@ const Header = ({}: HeaderProps) => {
       </div>
 
       <div>
-        <label className="form-control w-full max-w-xs">
+        <label className="input input-bordered input-primary flex items-center gap-2">
+          Name:
           <input
             type="text"
             value={iconName}
-            className="input input-bordered input-primary w-full max-w-xs"
+            className="grow"
             onChange={changeIconNameHandler}
           />
         </label>
-      </div>
-
-      <div>
-        <button
-          className="btn btn-primary btn-md"
-          onClick={() => {
-            console.log(settings);
-          }}
-        >
-          Settings
-        </button>
       </div>
 
       <div>

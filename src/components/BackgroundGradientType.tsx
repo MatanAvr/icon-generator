@@ -15,8 +15,7 @@ const BackgroundGradientType = ({}: BackgroundGradientTypeProps) => {
   return (
     <div className="flex flex-col w-full py-1 gap-1">
       <span>Gradient type</span>
-      <div className="flex items-center justify-center gap-2 w-full py-1">
-        <span className="text-white">Linear</span>
+      <div className="flex items-center gap-2 w-full py-1">
         <input
           type="radio"
           name="Linear"
@@ -26,6 +25,9 @@ const BackgroundGradientType = ({}: BackgroundGradientTypeProps) => {
             changeBgGradientTypeHandler("linear");
           }}
         />
+        <span className="text-white">Linear</span>
+        <div className="divider  divider-horizontal" />
+
         <input
           type="radio"
           name="Radial"

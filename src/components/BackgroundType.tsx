@@ -1,4 +1,4 @@
-import { changeBgType, changeSettings } from "../Features/Settings";
+import { changeBgType } from "../Features/Settings";
 import { useAppDispatch, useAppSelector } from "../hooks/useStoreHooks";
 import { TBgType } from "../types";
 
@@ -14,8 +14,7 @@ const BackgroundType = ({}: BackgroundTypeProps) => {
   return (
     <div className="flex flex-col w-full py-1 gap-1">
       <span>Color type</span>
-      <div className="flex items-center justify-center gap-2 w-full py-1">
-        <span>Solid</span>
+      <div className="flex items-center gap-2 w-full py-1">
         <input
           type="radio"
           name="Solid"
@@ -25,6 +24,8 @@ const BackgroundType = ({}: BackgroundTypeProps) => {
             changeBgTypeHandler("solid");
           }}
         />
+        <span>Solid</span>
+        <div className="divider  divider-horizontal" />
         <input
           type="radio"
           name="Gradient"
